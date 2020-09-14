@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "nodemon": "npm run nodemon"
+    "nodemon": "nodemon app.js"
   },
   "author": "Gavin Vaske",
   "license": "ISC",
