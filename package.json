@@ -1,0 +1,26 @@
+{
+  "name": "node_passport_login",
+  "version": "1.0.0",
+  "description": "An application built following this tutorial: https://www.youtube.com/watch?v=6FOq4cUdH8k&list=WL&index=2&ab_channel=TraversyMedia",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "nodemon": "npm run nodemon"
+  },
+  "author": "Gavin Vaske",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.5",
+    "ejs-layouts": "0.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.10.5",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
