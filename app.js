@@ -17,6 +17,9 @@ const app = express();
 // EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
+
+// Body Parser
+app.use(express.urlencoded({extended: false}));
  
 const PORT = process.env.PORT || 3000;
 
