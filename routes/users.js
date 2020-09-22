@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 const User = require('../models/User');
 
@@ -65,6 +66,20 @@ router.post('/register', (request, response) => {
         }
       });
   }
+});
+
+router.post('/login', (request, response, next) => {
+  passport.authenticate('local', {
+      successRedirect: '/dashboard',
+      failureRedirect: '/users/login',
+      failureFlash: 'Invalid username or password.'
+  })(request, response, next);
+});
+
+router.get('/logout', (request, response) => {
+  request.logout(); // passport middleware
+  request.flash('success_msg', 'You are logged out');
+  response.redirect('/users/login');
 });
 
 module.exports = router;

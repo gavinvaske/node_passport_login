@@ -4,10 +4,15 @@ const mongoose = require('mongoose');
 const env = require('dotenv').config();
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
+
 
 if (env.error) {
   console.log('Error loading .env');
 }
+
+// Passport config
+require('./config/passport')(passport);
 
 // Connect to Mongo
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true})
@@ -30,6 +35,10 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Connect Flash
 app.use(flash());
  
@@ -37,6 +46,7 @@ app.use(flash());
 app.use((request, response, next) => {
   response.locals.success_msg = request.flash('success_msg');
   response.locals.error_msg = request.flash('error_msg');
+  response.locals.error = request.flash('error');
   next();
 });
 const PORT = process.env.PORT || 3000;
